@@ -4,6 +4,8 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
@@ -47,6 +49,17 @@ public class SampleTest {
                 .setDeviceName("Android Emulator")
                 .setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2)
                 .setApp(System.getProperty("user.dir") + "/VodQA.apk");
+
+//        XCUITestOptions xcuiTestOptions = new XCUITestOptions()
+//                .setApp(System.getProperty("user.dir") + "/vodqa.zip")
+//                .setAutomationName(AutomationName.IOS_XCUI_TEST)
+//                .setDeviceName("iPhone 12")
+//                .setNewCommandTimeout(Duration.ofSeconds(60))
+//                .setPlatformVersion("14.5");
+//
+//
+//        driver = new IOSDriver(service.getUrl(), xcuiTestOptions);
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         driver = new AndroidDriver(service.getUrl(), uiAutomator2Options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));

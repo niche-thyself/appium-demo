@@ -29,8 +29,9 @@ public class SampleTest {
         UiAutomator2Options uiAutomator2Options = new UiAutomator2Options()
                 .setDeviceName("Android Emulator")
                 .setAutomationName("UIAutomator2")
-                .setApp(System.getProperty("user.dir") + "/VodQA.apk");
-
+                .setApp(System.getProperty("user.dir") + "/VodQA.apk")
+                .setAppActivity("org.wordpress.android.ui.WPLaunchActivity")
+                .setAppPackage("org.wordpress.android");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), uiAutomator2Options);
     }
 
@@ -45,6 +46,10 @@ public class SampleTest {
     public void tearDown() {
         driver.quit();
     }
-
+//org.wordpress.android:id/nux_create_account_button
+//org.wordpress.android:id/email_address
+    //org.wordpress.android:id/username
+    //org.wordpress.android:id/password
+    //org.wordpress.android:id/site_url
 
 }

@@ -3,7 +3,10 @@ package com.atd.test;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.checkerframework.checker.guieffect.qual.UI;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -23,18 +26,19 @@ public class SampleTest {
 
     @BeforeClass
     public void setUp() throws MalformedURLException {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
-        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 700000);
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UIAutomator2");
-        capabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "/VodQA.apk");
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        UiAutomator2Options uiAutomator2Options = new UiAutomator2Options()
+                .setDeviceName("Android Emulator")
+                .setAutomationName("UIAutomator2")
+                .setApp(System.getProperty("user.dir") + "/VodQA.apk");
+
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), uiAutomator2Options);
     }
 
     @Test
     public void SampleTest() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("login"))).click();
+        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("slider1"))).click();
     }
 
     @AfterClass

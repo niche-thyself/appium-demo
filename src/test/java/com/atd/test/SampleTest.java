@@ -40,21 +40,10 @@ public class SampleTest {
         ((AndroidDriver)driver).setLocation(new Location(27.1767, 78.0081, 400));
         Location location = ((AndroidDriver)driver).location();
         System.out.println(location);
-        // Must be a driver that implements LocationContext
-
-
-//        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("login"))).click();
-//        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("slider1"))).click();
     }
 
     @AfterClass
     public void tearDown() {
         driver.quit();
     }
-//org.wordpress.android:id/nux_create_account_button
-//org.wordpress.android:id/email_address
-    //org.wordpress.android:id/username
-    //org.wordpress.android:id/password
-    //org.wordpress.android:id/site_url
-
 }

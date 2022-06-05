@@ -7,6 +7,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.checkerframework.checker.guieffect.qual.UI;
+import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -29,17 +30,21 @@ public class SampleTest {
         UiAutomator2Options uiAutomator2Options = new UiAutomator2Options()
                 .setDeviceName("Android Emulator")
                 .setAutomationName("UIAutomator2")
-                .setApp(System.getProperty("user.dir") + "/VodQA.apk")
-                .setAppActivity("org.wordpress.android.ui.WPLaunchActivity")
-                .setAppPackage("org.wordpress.android");
+                .setApp(System.getProperty("user.dir") + "/VodQA.apk");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), uiAutomator2Options);
     }
 
     @Test
     public void SampleTest() {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("login"))).click();
-        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("slider1"))).click();
+        ((AndroidDriver)driver).setLocation(new Location(27.1767, 78.0081, 400));
+        Location location = ((AndroidDriver)driver).location();
+        System.out.println(location);
+        // Must be a driver that implements LocationContext
+
+
+//        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("login"))).click();
+//        wait.until(presenceOfElementLocated(AppiumBy.accessibilityId("slider1"))).click();
     }
 
     @AfterClass
